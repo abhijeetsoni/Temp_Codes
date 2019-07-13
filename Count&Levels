@@ -1,0 +1,53 @@
+  createHUD() {
+    var score = document.createElement('div');
+    score.id = "score";
+    score.style.position = 'absolute';
+    score.style.width = 1;
+    score.style.height = 1;
+    score.innerHTML = "Score: " + this.score;
+    score.style.top = 50 + 'px';
+    score.style.left = 50 + 'px';
+    score.style.fontSize = 50 + 'px';
+    score.style.color = "white";
+    document.body.appendChild(score);
+
+    var ammo = document.createElement('div');
+    ammo.id = "ammo";
+    ammo.style.position = 'absolute';
+    ammo.style.width = 1;
+    ammo.style.height = 1;
+    ammo.innerHTML = "Ammunation: " + this.actualAmmo;
+    ammo.style.top = 100 + 'px';
+    ammo.style.left = 50 + 'px';
+    ammo.style.fontSize = 50 + 'px';
+    ammo.style.color = "white";
+    document.body.appendChild(ammo);
+
+    var level = document.createElement('div');
+    level.id = "level";
+    level.style.position = 'absolute';
+    level.style.width = 1;
+    level.style.height = 1;
+    level.innerHTML = "Level: " + this.level;
+    level.style.top = 150 + 'px';
+    level.style.left = 50 + 'px';
+    level.style.fontSize = 50 + 'px';
+    level.style.color = "white";
+    document.body.appendChild(level);
+  }
+
+  updateAmmo() {
+    var text = document.getElementById("ammo");
+    text.innerHTML = "Ammunation: " + this.actualAmmo;
+  }
+
+  updateScore(newScore){
+    var text = document.getElementById("score");
+    this.score += newScore;
+    text.innerHTML = "Score: " + this.score;
+  }
+
+  updateLevel() {
+    var level = document.getElementById("level");
+    level.innerHTML = "Level: " + this.level;
+  }
