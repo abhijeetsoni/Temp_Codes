@@ -1,0 +1,87 @@
+<html>
+
+<head>
+
+  <script src="js/three.js"></script>
+  <script src="https://threejs.org/build/three.min.js"></script>
+  <script src="OrbitControls.js"></script>
+  <style>
+      #container {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+      }
+  </style>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+
+  </div>
+
+  <script>
+      const container = document.getElementById('container');
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color('skyblue');
+
+      const fov = 25; // fov = Field Of View
+      const aspect = container.clientWidth / container.clientHeight;
+      const near = 0.1;
+      const far = 10;
+
+      camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+
+
+      camera.position.set(0, 0, 10);
+
+      const geometry = new THREE.BoxBufferGeometry( 1, 1, 1 );
+      const material = new THREE.MeshStandardMaterial( {color: 0xffff00} );
+      const sphere = new THREE.Mesh( geometry, material );
+      sphere.rotation.set(5,5,0);
+      scene.add(sphere);
+
+
+        //for light in box
+      const light = new THREE.DirectionalLight( 0xffffff,5.0 ); // soft white light
+      light.position.set(10,10,10);
+       scene.add( light );
+
+
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+      renderer.render(scene, camera);
+      
+      
+
+
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+       function animate(){
+           sphere.rotation.x += 0.05;
+           requestAnimationFrame(animate);
+       renderer.render(scene,camera);
+       }
+       animate();
+
+
+       function onWindowResize() {
+            camera.aspect = container.clientWidth / container.clientHeight;
+
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            camera.updateProjectionMatrix();
+        }
+        window.addEventListener('resize', onWindowResize);
+
+       
+  </script>
+
+
+</body>
+
+</html>
