@@ -1,6 +1,6 @@
 constructor (renderer, aCamera) {
  this.maxBullets = 20;
-    this.actualAmmo = 40; //Balas totales antes de acabar el juego
+    this.actualAmmo = 40; 
     this.score = 0;
     this.lastScore = 0;
     this.level = 1;
