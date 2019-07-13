@@ -1,4 +1,4 @@
-  createHUD() {
+  start() {
     var score = document.createElement('div');
     score.id = "score";
     score.style.position = 'absolute';
