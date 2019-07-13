@@ -1,4 +1,12 @@
-  start() {
+constructor (renderer, aCamera) {
+ this.maxBullets = 20;
+    this.actualAmmo = 40; //Balas totales antes de acabar el juego
+    this.score = 0;
+    this.lastScore = 0;
+    this.level = 1;
+
+    this.start();
+start() {
     var score = document.createElement('div');
     score.id = "score";
     score.style.position = 'absolute';
@@ -51,3 +59,4 @@
     var level = document.getElementById("level");
     level.innerHTML = "Level: " + this.level;
   }
+}
